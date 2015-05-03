@@ -14,6 +14,10 @@
 		BE3D60231AF689E8003C70B7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE3D60221AF689E8003C70B7 /* Images.xcassets */; };
 		BE3D60261AF689E8003C70B7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE3D60241AF689E8003C70B7 /* LaunchScreen.xib */; };
 		BE3D60321AF689E8003C70B7 /* CustomKeyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3D60311AF689E8003C70B7 /* CustomKeyTests.m */; };
+		BE3D60451AF68A44003C70B7 /* KeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3D60441AF68A44003C70B7 /* KeyboardViewController.m */; };
+		BE3D60481AF68A44003C70B7 /* CustomBoard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BE3D603F1AF68A44003C70B7 /* CustomBoard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BE3D605C1AF692C5003C70B7 /* keyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE3D605B1AF692C5003C70B7 /* keyView.xib */; };
+		BE3D605F1AF692EE003C70B7 /* keyView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3D605E1AF692EE003C70B7 /* keyView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,7 +28,28 @@
 			remoteGlobalIDString = BE3D60111AF689E8003C70B7;
 			remoteInfo = CustomKey;
 		};
+		BE3D60461AF68A44003C70B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE3D600A1AF689E8003C70B7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BE3D603E1AF68A44003C70B7;
+			remoteInfo = CustomBoard;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BE3D604C1AF68A44003C70B7 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				BE3D60481AF68A44003C70B7 /* CustomBoard.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		BE3D60121AF689E8003C70B7 /* CustomKey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomKey.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,6 +65,15 @@
 		BE3D602B1AF689E8003C70B7 /* CustomKeyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CustomKeyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE3D60301AF689E8003C70B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE3D60311AF689E8003C70B7 /* CustomKeyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomKeyTests.m; sourceTree = "<group>"; };
+		BE3D603F1AF68A44003C70B7 /* CustomBoard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CustomBoard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE3D60421AF68A44003C70B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE3D60431AF68A44003C70B7 /* KeyboardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardViewController.h; sourceTree = "<group>"; };
+		BE3D60441AF68A44003C70B7 /* KeyboardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyboardViewController.m; sourceTree = "<group>"; };
+		BE3D605B1AF692C5003C70B7 /* keyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = keyView.xib; sourceTree = "<group>"; };
+		BE3D605D1AF692EE003C70B7 /* keyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = keyView.h; sourceTree = "<group>"; };
+		BE3D605E1AF692EE003C70B7 /* keyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = keyView.m; sourceTree = "<group>"; };
+		BE3D60601AF6966F003C70B7 /* CustomBoard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CustomBoard.entitlements; sourceTree = "<group>"; };
+		BE3D60611AF6969F003C70B7 /* CustomKey.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CustomKey.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +91,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BE3D603C1AF68A44003C70B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -65,6 +106,7 @@
 			children = (
 				BE3D60141AF689E8003C70B7 /* CustomKey */,
 				BE3D602E1AF689E8003C70B7 /* CustomKeyTests */,
+				BE3D60401AF68A44003C70B7 /* CustomBoard */,
 				BE3D60131AF689E8003C70B7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -74,6 +116,7 @@
 			children = (
 				BE3D60121AF689E8003C70B7 /* CustomKey.app */,
 				BE3D602B1AF689E8003C70B7 /* CustomKeyTests.xctest */,
+				BE3D603F1AF68A44003C70B7 /* CustomBoard.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -81,6 +124,7 @@
 		BE3D60141AF689E8003C70B7 /* CustomKey */ = {
 			isa = PBXGroup;
 			children = (
+				BE3D60611AF6969F003C70B7 /* CustomKey.entitlements */,
 				BE3D60191AF689E8003C70B7 /* AppDelegate.h */,
 				BE3D601A1AF689E8003C70B7 /* AppDelegate.m */,
 				BE3D601C1AF689E8003C70B7 /* ViewController.h */,
@@ -119,6 +163,28 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		BE3D60401AF68A44003C70B7 /* CustomBoard */ = {
+			isa = PBXGroup;
+			children = (
+				BE3D60601AF6966F003C70B7 /* CustomBoard.entitlements */,
+				BE3D60431AF68A44003C70B7 /* KeyboardViewController.h */,
+				BE3D60441AF68A44003C70B7 /* KeyboardViewController.m */,
+				BE3D605D1AF692EE003C70B7 /* keyView.h */,
+				BE3D605E1AF692EE003C70B7 /* keyView.m */,
+				BE3D605B1AF692C5003C70B7 /* keyView.xib */,
+				BE3D60411AF68A44003C70B7 /* Supporting Files */,
+			);
+			path = CustomBoard;
+			sourceTree = "<group>";
+		};
+		BE3D60411AF68A44003C70B7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BE3D60421AF68A44003C70B7 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -129,10 +195,12 @@
 				BE3D600E1AF689E8003C70B7 /* Sources */,
 				BE3D600F1AF689E8003C70B7 /* Frameworks */,
 				BE3D60101AF689E8003C70B7 /* Resources */,
+				BE3D604C1AF68A44003C70B7 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BE3D60471AF68A44003C70B7 /* PBXTargetDependency */,
 			);
 			name = CustomKey;
 			productName = CustomKey;
@@ -157,6 +225,23 @@
 			productReference = BE3D602B1AF689E8003C70B7 /* CustomKeyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		BE3D603E1AF68A44003C70B7 /* CustomBoard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE3D60491AF68A44003C70B7 /* Build configuration list for PBXNativeTarget "CustomBoard" */;
+			buildPhases = (
+				BE3D603B1AF68A44003C70B7 /* Sources */,
+				BE3D603C1AF68A44003C70B7 /* Frameworks */,
+				BE3D603D1AF68A44003C70B7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CustomBoard;
+			productName = CustomBoard;
+			productReference = BE3D603F1AF68A44003C70B7 /* CustomBoard.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -168,10 +253,25 @@
 				TargetAttributes = {
 					BE3D60111AF689E8003C70B7 = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = DKW3QK9E5C;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					BE3D602A1AF689E8003C70B7 = {
 						CreatedOnToolsVersion = 6.3;
 						TestTargetID = BE3D60111AF689E8003C70B7;
+					};
+					BE3D603E1AF68A44003C70B7 = {
+						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = DKW3QK9E5C;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -190,6 +290,7 @@
 			targets = (
 				BE3D60111AF689E8003C70B7 /* CustomKey */,
 				BE3D602A1AF689E8003C70B7 /* CustomKeyTests */,
+				BE3D603E1AF68A44003C70B7 /* CustomBoard */,
 			);
 		};
 /* End PBXProject section */
@@ -209,6 +310,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE3D603D1AF68A44003C70B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE3D605C1AF692C5003C70B7 /* keyView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +342,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BE3D603B1AF68A44003C70B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE3D605F1AF692EE003C70B7 /* keyView.m in Sources */,
+				BE3D60451AF68A44003C70B7 /* KeyboardViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -240,6 +358,11 @@
 			isa = PBXTargetDependency;
 			target = BE3D60111AF689E8003C70B7 /* CustomKey */;
 			targetProxy = BE3D602C1AF689E8003C70B7 /* PBXContainerItemProxy */;
+		};
+		BE3D60471AF68A44003C70B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BE3D603E1AF68A44003C70B7 /* CustomBoard */;
+			targetProxy = BE3D60461AF68A44003C70B7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -347,9 +470,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CustomKey/CustomKey.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CustomKey/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -357,9 +484,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CustomKey/CustomKey.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CustomKey/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -397,6 +528,38 @@
 			};
 			name = Release;
 		};
+		BE3D604A1AF68A44003C70B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CustomBoard/CustomBoard.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CustomBoard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		BE3D604B1AF68A44003C70B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CustomBoard/CustomBoard.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = CustomBoard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -422,6 +585,14 @@
 			buildConfigurations = (
 				BE3D60391AF689E8003C70B7 /* Debug */,
 				BE3D603A1AF689E8003C70B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		BE3D60491AF68A44003C70B7 /* Build configuration list for PBXNativeTarget "CustomBoard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE3D604A1AF68A44003C70B7 /* Debug */,
+				BE3D604B1AF68A44003C70B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
