@@ -8,8 +8,10 @@
 
 #import "KeyboardViewController.h"
 #import "keyView.h"
-@interface KeyboardViewController ()
+#define defaultsVal @"firstStart1"
+@interface KeyboardViewController ()<keyBoardDel>
 @property (nonatomic, strong) UIButton *nextKeyboardButton;
+@property (nonatomic) keyView *keyboard;
 @end
 
 @implementation KeyboardViewController
@@ -22,23 +24,40 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Perform custom UI setup here
-    self.nextKeyboardButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    
-    [self.nextKeyboardButton setTitle:NSLocalizedString(@"Next Keyboard", @"Title for 'Next Keyboard' button") forState:UIControlStateNormal];
-    [self.nextKeyboardButton sizeToFit];
-    self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = NO;
-    
+    self.keyboard = [[[NSBundle mainBundle] loadNibNamed:@"keyView" owner:nil options:nil] objectAtIndex:0];
+    self.inputView = self.keyboard;
+    [self.keyboard initVariables];
+    self.keyboard.delegate = self;
+    self.nextKeyboardButton = self.keyboard.nextKeyboardButton;
     [self.nextKeyboardButton addTarget:self action:@selector(advanceToNextInputMode) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.view addSubview:self.nextKeyboardButton];
-    
-    NSLayoutConstraint *nextKeyboardButtonLeftSideConstraint = [NSLayoutConstraint constraintWithItem:self.nextKeyboardButton attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0.0];
-    NSLayoutConstraint *nextKeyboardButtonBottomConstraint = [NSLayoutConstraint constraintWithItem:self.nextKeyboardButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0];
-    [self.view addConstraints:@[nextKeyboardButtonLeftSideConstraint, nextKeyboardButtonBottomConstraint]];
+    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.myKey"];
+    if(![defaults boolForKey:defaultsVal]){
+        [self resetData];
+    }
+    [[self keyboard] updateValues];
 }
-
+-(void)resetData{
+    NSArray *defaultData = @[@"Bus Started",@"Srishti",@"Reaching Highway",@"Highway",@"Reaching Toll",@"Crossing Toll",@"Rivali park",@"Sai Dham",@"Growels"];
+    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.myKey"];
+    for (int i =0; i<9; i++) {
+        NSString *strVal = [NSString stringWithFormat:@"val%d",i];
+        [defaults setObject:[defaultData objectAtIndex:i] forKey:strVal];
+        [defaults synchronize];
+    }
+    [defaults setBool:YES forKey:defaultsVal];
+    [defaults synchronize];
+    
+}
+-(void)KeyPressedWithString:(NSString *)string{
+    [self deletePress];
+    [[self textDocumentProxy] insertText:string];
+}
+-(void)deletePress{
+    NSString *precedingContext = self.textDocumentProxy.documentContextBeforeInput;
+    for (int i=0; i<precedingContext.length; i++) {
+        [self.textDocumentProxy deleteBackward];
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated

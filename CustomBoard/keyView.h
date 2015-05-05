@@ -7,8 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol keyBoardDel <NSObject>
 
+-(void)KeyPressedWithString:(NSString*)string;
+-(void)deletePress;
+@end
 @interface keyView : UIView
 @property (weak, nonatomic) IBOutlet UIButton *nextKeyboardButton;
-
+@property (nonatomic) id<keyBoardDel> delegate;
+@property (nonatomic) NSMutableArray *allButtons;
+-(void)initVariables;
+-(void)updateValues;
 @end
+

@@ -579,6 +579,7 @@
 				BE3D60371AF689E8003C70B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BE3D60381AF689E8003C70B7 /* Build configuration list for PBXNativeTarget "CustomKeyTests" */ = {
 			isa = XCConfigurationList;
@@ -587,6 +588,7 @@
 				BE3D603A1AF689E8003C70B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BE3D60491AF68A44003C70B7 /* Build configuration list for PBXNativeTarget "CustomBoard" */ = {
 			isa = XCConfigurationList;
@@ -595,6 +597,7 @@
 				BE3D604B1AF68A44003C70B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
