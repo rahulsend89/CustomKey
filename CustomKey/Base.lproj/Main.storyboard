@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,21 +16,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cHS-Un-eBr">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c4a-8Y-7Ik">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="TtK-IY-JsA"/>
+                                </connections>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aqc-zw-jRK">
+                                <rect key="frame" x="517" y="44" width="66" height="30"/>
+                                <state key="normal" title="SaveData">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveData:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="aga-1f-LQr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="cHS-Un-eBr" secondAttribute="centerY" id="a7m-mb-KPi"/>
-                            <constraint firstItem="cHS-Un-eBr" firstAttribute="height" secondItem="kh9-bI-dsS" secondAttribute="height" id="niX-yi-GJG"/>
-                            <constraint firstAttribute="centerX" secondItem="cHS-Un-eBr" secondAttribute="centerX" id="paE-xc-Ug6"/>
-                            <constraint firstItem="cHS-Un-eBr" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" id="vUH-Mz-SkA"/>
+                            <constraint firstItem="c4a-8Y-7Ik" firstAttribute="top" secondItem="Aqc-zw-jRK" secondAttribute="bottom" constant="-74" id="66K-bX-mvg"/>
+                            <constraint firstAttribute="width" secondItem="c4a-8Y-7Ik" secondAttribute="width" id="DgB-RU-np7"/>
+                            <constraint firstAttribute="centerY" secondItem="c4a-8Y-7Ik" secondAttribute="centerY" id="Sc1-Iw-a2W"/>
+                            <constraint firstAttribute="centerX" secondItem="c4a-8Y-7Ik" secondAttribute="centerX" id="ake-R1-VFg"/>
+                            <constraint firstAttribute="height" secondItem="c4a-8Y-7Ik" secondAttribute="height" id="kZo-cW-U4k"/>
+                            <constraint firstItem="Aqc-zw-jRK" firstAttribute="leading" secondItem="c4a-8Y-7Ik" secondAttribute="trailing" constant="-83" id="zJe-tq-sKi"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mytext" destination="c4a-8Y-7Ik" id="QRB-cE-bIA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

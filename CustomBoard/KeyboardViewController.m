@@ -39,6 +39,8 @@
 -(void)resetData{
     NSArray *defaultData = @[@"Bus Started",@"Srishti",@"Reaching Highway",@"Highway",@"Reaching Toll",@"Crossing Toll",@"Rivali park",@"Sai Dham",@"Growels"];
     NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.myKey"];
+    [defaults setInteger:9 forKey:@"maxLen"];
+    [defaults synchronize];
     for (int i =0; i<9; i++) {
         NSString *strVal = [NSString stringWithFormat:@"val%d",i];
         [defaults setObject:[defaultData objectAtIndex:i] forKey:strVal];
@@ -46,7 +48,6 @@
     }
     [defaults setBool:YES forKey:defaultsVal];
     [defaults synchronize];
-    
 }
 -(void)KeyPressedWithString:(NSString *)string{
     [self deletePress];
