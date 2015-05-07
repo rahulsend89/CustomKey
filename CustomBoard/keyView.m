@@ -58,7 +58,7 @@
             button = [self buttonWithTitle:buttonString target:self selector:@selector(keyPress:) frame:buttonRect :i];
         }
         [self.myScrollView addSubview:button];
-        [self.myScrollView setContentInset:UIEdgeInsetsMake(-height, self.myScrollView.frame.origin.y, ypos+(height+(yspace*i))-height, self.myScrollView.frame.size.width+100.0f)];
+        [self.myScrollView setContentInset:UIEdgeInsetsMake(-height, self.myScrollView.frame.origin.y, ypos+(height+(yspace*i))-height, 0.0f)];
         [self.allButtons addObject:button];
     }
 }
