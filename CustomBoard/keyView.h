@@ -16,7 +16,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *nextKeyboardButton;
 @property (nonatomic) id<keyBoardDel> delegate;
 @property (nonatomic) NSMutableArray *allButtons;
+@property (weak, nonatomic) IBOutlet UIScrollView *myScrollView;
 -(void)initVariables;
 -(void)updateValues;
+-(void)updateFrames;
 @end
 

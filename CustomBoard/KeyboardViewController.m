@@ -12,14 +12,21 @@
 @interface KeyboardViewController ()<keyBoardDel>
 @property (nonatomic, strong) UIButton *nextKeyboardButton;
 @property (nonatomic) keyView *keyboard;
+
+
+@property (nonatomic) CGFloat portraitHeight;
+@property (nonatomic) CGFloat landscapeHeight;
+@property (nonatomic) BOOL isLandscape;
+@property (nonatomic) NSLayoutConstraint *heightConstraint;
+@property (nonatomic) NSLayoutConstraint *widthConstraint;
+
 @end
 
 @implementation KeyboardViewController
 
+
 - (void)updateViewConstraints {
     [super updateViewConstraints];
-    
-    // Add custom view sizing constraints here
 }
 
 - (void)viewDidLoad {
@@ -35,6 +42,9 @@
         [self resetData];
     }
     [[self keyboard] updateValues];
+}
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
+    [[self keyboard] updateFrames];
 }
 -(void)resetData{
     NSArray *defaultData = @[@"Bus Started",@"Srishti",@"Reaching Highway",@"Highway",@"Reaching Toll",@"Crossing Toll",@"Rivali park",@"Sai Dham",@"Growels"];

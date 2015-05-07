@@ -2,168 +2,53 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="keyView">
-            <rect key="frame" x="0.0" y="0.0" width="324" height="223"/>
+            <rect key="frame" x="0.0" y="0.0" width="230" height="180"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YID-vc-d5R">
-                    <rect key="frame" x="0.0" y="0.0" width="51" height="216"/>
+                    <rect key="frame" x="0.0" y="0.0" width="53" height="180"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="216" id="WdJ-Mq-MC0"/>
-                        <constraint firstAttribute="width" constant="51" id="mxg-fo-2eK"/>
+                        <constraint firstAttribute="width" constant="53" id="OfS-qa-Rdc"/>
+                        <constraint firstAttribute="width" secondItem="YID-vc-d5R" secondAttribute="height" multiplier="17:72" id="r1p-MY-lh8"/>
                     </constraints>
                     <state key="normal" title="Back">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="r1p-MY-lh8"/>
+                        </mask>
+                    </variation>
                 </button>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UlB-Cn-qNY">
-                    <rect key="frame" x="53" y="0.0" width="271" height="223"/>
-                    <subviews>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5gh-3L-KFR">
-                            <rect key="frame" x="3" y="135" width="130" height="40"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                            <state key="normal" title="Highway">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="keyPress:" destination="iN0-l3-epB" eventType="touchUpInside" id="uWB-OW-XDT"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XFN-cS-b8e">
-                            <rect key="frame" x="3" y="180" width="130" height="40"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                            <state key="normal" title="Reaching Toll">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="keyPress:" destination="iN0-l3-epB" eventType="touchUpInside" id="Vn4-0g-YsO"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7tS-z3-OAu">
-                            <rect key="frame" x="138" y="135" width="130" height="40"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                            <state key="normal" title="Growels">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="keyPress:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ifv-BJ-2RB"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6y0-ZR-BoM">
-                            <rect key="frame" x="3" y="90" width="130" height="40"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                            <state key="normal" title="Reaching Highway">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="keyPress:" destination="iN0-l3-epB" eventType="touchUpInside" id="fdx-yf-Wf3"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3aB-LY-dGi">
-                            <rect key="frame" x="138" y="47" width="130" height="40"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                            <state key="normal" title="Rivali park">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="keyPress:" destination="iN0-l3-epB" eventType="touchUpInside" id="qsl-0u-HQ3"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GtP-44-16t">
-                            <rect key="frame" x="138" y="181" width="130" height="38"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                            <state key="normal" title="Delete">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="delete:" destination="iN0-l3-epB" eventType="touchUpInside" id="4CN-YA-jNS"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LzW-Is-QOO">
-                            <rect key="frame" x="3" y="2" width="130" height="40"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                            <state key="normal" title="Bus Started">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="keyPress:" destination="iN0-l3-epB" eventType="touchUpInside" id="R3Z-9V-9fK"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="enb-24-IBx">
-                            <rect key="frame" x="3" y="47" width="130" height="40"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                            <state key="normal" title="Srishti">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="keyPress:" destination="iN0-l3-epB" eventType="touchUpInside" id="BCr-hN-o0T"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebT-bj-sya">
-                            <rect key="frame" x="138" y="2" width="130" height="40"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                            <state key="normal" title="Crossing Toll">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="keyPress:" destination="iN0-l3-epB" eventType="touchUpInside" id="8Or-Yd-ZpA"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6DA-Ie-iAF">
-                            <rect key="frame" x="138" y="90" width="130" height="40"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                            <state key="normal" title="Sai Dham">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="keyPress:" destination="iN0-l3-epB" eventType="touchUpInside" id="tr7-P8-zLc"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="271" id="F1a-Sb-h0C"/>
-                        <constraint firstAttribute="height" constant="223" id="qmP-l2-0fo"/>
-                    </constraints>
+                    <rect key="frame" x="53" y="0.0" width="177" height="180"/>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="UlB-Cn-qNY" secondAttribute="trailing" id="3Dw-G1-kbE"/>
-                <constraint firstAttribute="bottom" secondItem="YID-vc-d5R" secondAttribute="bottom" constant="7" id="5sd-a0-sjW"/>
-                <constraint firstItem="UlB-Cn-qNY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="53" id="Khp-fm-7Rg"/>
-                <constraint firstItem="YID-vc-d5R" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="MUP-Ko-n05"/>
+                <constraint firstItem="YID-vc-d5R" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Fz3-sH-RbM"/>
+                <constraint firstItem="UlB-Cn-qNY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="53" id="LVe-wE-pgY"/>
+                <constraint firstAttribute="bottom" secondItem="YID-vc-d5R" secondAttribute="bottom" id="MIC-jc-PZD"/>
+                <constraint firstAttribute="trailing" secondItem="UlB-Cn-qNY" secondAttribute="trailing" id="fxU-iy-nRS"/>
+                <constraint firstItem="YID-vc-d5R" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="jyz-KH-8f6"/>
+                <constraint firstAttribute="bottom" secondItem="UlB-Cn-qNY" secondAttribute="bottom" id="mE1-dJ-Sjv"/>
+                <constraint firstItem="UlB-Cn-qNY" firstAttribute="top" secondItem="YID-vc-d5R" secondAttribute="top" id="vqh-iO-kHA"/>
+                <constraint firstItem="UlB-Cn-qNY" firstAttribute="leading" secondItem="YID-vc-d5R" secondAttribute="trailing" id="yRC-qI-6sM"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="myScrollView" destination="UlB-Cn-qNY" id="8bx-2F-uZP"/>
                 <outlet property="nextKeyboardButton" destination="YID-vc-d5R" id="rFd-5R-pBE"/>
             </connections>
-            <point key="canvasLocation" x="254" y="363.5"/>
+            <point key="canvasLocation" x="250" y="348"/>
         </view>
     </objects>
 </document>

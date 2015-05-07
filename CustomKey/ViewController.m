@@ -29,6 +29,8 @@
             i++;
         }
     }
+    [defaults setInteger:i forKey:@"maxLen"];
+    [defaults synchronize];
 }
 -(void)resetData{
     NSArray *defaultData = @[@"Bus Started",@"Srishti",@"Reaching Highway",@"Highway",@"Reaching Toll",@"Crossing Toll",@"Rivali park",@"Sai Dham",@"Growels"];
