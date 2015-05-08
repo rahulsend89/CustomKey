@@ -68,7 +68,7 @@ void NotificationCallback(CFNotificationCenterRef center,
 -(void)didReceiveMessageNotification:(NSNotification *)notification{
     NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.myKey"];
     NSInteger maxlength = [defaults integerForKey:@"maxLen"];
-    if(maxlength !=self.allButtons.count+1){
+    if(maxlength !=self.allButtons.count-1){
         for (UIButton *btn in self.allButtons) {
             [btn removeFromSuperview];
         }
@@ -146,6 +146,7 @@ void NotificationCallback(CFNotificationCenterRef center,
 }
 -(void)updateValues{
     NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.myKey"];
+    [defaults synchronize];
     int i=0;
     int maxLen = (int)self.allButtons.count;
     for (UIButton *btn in self.allButtons) {
