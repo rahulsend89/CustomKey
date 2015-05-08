@@ -10,7 +10,11 @@
 
 @implementation keyView
 - (IBAction)keyPress:(UIButton*)sender {
-    [[self delegate] KeyPressedWithString:sender.titleLabel.text];
+    if([sender.titleLabel.text isEqualToString:@"Delete"]){
+        [self delete:sender];
+    }else{
+        [[self delegate] KeyPressedWithString:sender.titleLabel.text];
+    }
 }
 - (IBAction)delete:(id)sender {
     [[self delegate] deletePress];
@@ -18,6 +22,63 @@
 -(void)initVariables{
     self.allButtons = [NSMutableArray array];
     [self addButtons];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didReceiveMessageNotification:)
+                                                 name:NSUserDefaultsDidChangeNotification
+                                               object:nil];
+    [self registerForNotificationsWithIdentifier:NSUserDefaultsDidChangeNotification];
+}
+- (void)registerForNotificationsWithIdentifier:(NSString *)identifier {
+    CFNotificationCenterRef const center = CFNotificationCenterGetDarwinNotifyCenter();
+    CFStringRef str = (__bridge CFStringRef)identifier;
+    CFNotificationCenterAddObserver(center,
+                                    (__bridge const void *)(self),
+                                    NotificationCallback,
+                                    str,
+                                    NULL,
+                                    CFNotificationSuspensionBehaviorDeliverImmediately);
+}
+
+- (void)unregisterForNotificationsWithIdentifier:(NSString *)identifier {
+    CFNotificationCenterRef const center = CFNotificationCenterGetDarwinNotifyCenter();
+    CFStringRef str = (__bridge CFStringRef)identifier;
+    CFNotificationCenterRemoveObserver(center,
+                                       (__bridge const void *)(self),
+                                       str,
+                                       NULL);
+}
+
+void NotificationCallback(CFNotificationCenterRef center,
+                                  void * observer,
+                                  CFStringRef name,
+                                  void const * object,
+                                  CFDictionaryRef userInfo) {
+    NSString *identifier = (__bridge NSString *)name;
+    [[NSNotificationCenter defaultCenter] postNotificationName:NSUserDefaultsDidChangeNotification
+                                                        object:nil
+                                                      userInfo:@{@"identifier" : identifier}];
+}
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self unregisterForNotificationsWithIdentifier:NSUserDefaultsDidChangeNotification];
+    CFNotificationCenterRef const center = CFNotificationCenterGetDarwinNotifyCenter();
+    CFNotificationCenterRemoveEveryObserver(center, (__bridge const void *)(self));
+}
+
+-(void)didReceiveMessageNotification:(NSNotification *)notification{
+    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.myKey"];
+    NSInteger maxlength = [defaults integerForKey:@"maxLen"];
+    if(maxlength !=self.allButtons.count+1){
+        for (UIButton *btn in self.allButtons) {
+            [btn removeFromSuperview];
+        }
+        [self addButtons];
+        [self updateValues];
+    }else{
+        [self updateValues];
+        [self updateFrames];
+    }
+    
 }
 - (UIButton *)buttonWithTitle:(NSString *)title target:(id)target selector:(SEL)inSelector frame:(CGRect)frame :(int)fontSize{
     UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -52,7 +113,7 @@
         NSString *str = [NSString stringWithFormat:@"val%d",i];
         NSString *buttonString = [defaults valueForKey:str];
         UIButton *button = nil;
-        if([buttonString length]<=1){
+        if([buttonString length]<1){
             button = [self buttonWithTitle:@"Delete" target:self selector:@selector(keyPress:) frame:buttonRect :i];
         }else{
             button = [self buttonWithTitle:buttonString target:self selector:@selector(keyPress:) frame:buttonRect :i];

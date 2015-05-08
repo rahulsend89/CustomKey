@@ -10,27 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CustomKey/ViewController.m"
-            timestampString = "452675200.154295"
+            timestampString = "452750893.934746"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "-updateValues"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CustomKey/ViewController.m"
-            timestampString = "452675377.647862"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "-initValues"
             landmarkType = "5">
          </BreakpointContent>
@@ -41,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CustomBoard/KeyboardViewController.m"
-            timestampString = "452688297.28103"
+            filePath = "CustomBoard/keyView.m"
+            timestampString = "452751464.079422"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "-willAnimateRotationToInterfaceOrientation:duration:"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "-didReceiveMessageNotification:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

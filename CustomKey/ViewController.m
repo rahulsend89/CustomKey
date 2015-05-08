@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#define defaultsVal @"firstStart1"
+#define defaultsVal @"firstStart"
 @interface ViewController ()
 
 @end
@@ -31,6 +31,14 @@
     }
     [defaults setInteger:i forKey:@"maxLen"];
     [defaults synchronize];
+    [self sendNotificationForMessageWithIdentifier:NSUserDefaultsDidChangeNotification];
+}
+- (void)sendNotificationForMessageWithIdentifier:(NSString *)identifier {
+    CFNotificationCenterRef const center = CFNotificationCenterGetDarwinNotifyCenter();
+    CFDictionaryRef const userInfo = NULL;
+    BOOL const deliverImmediately = YES;
+    CFStringRef str = (__bridge CFStringRef)identifier;
+    CFNotificationCenterPostNotification(center, str, NULL, userInfo, deliverImmediately);
 }
 -(void)resetData{
     NSArray *defaultData = @[@"Bus Started",@"Srishti",@"Reaching Highway",@"Highway",@"Reaching Toll",@"Crossing Toll",@"Rivali park",@"Sai Dham",@"Growels"];
