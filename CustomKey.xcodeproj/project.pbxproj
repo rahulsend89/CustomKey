@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE241E281B08CB1E00FB7C74 /* MyModal.m in Sources */ = {isa = PBXBuildFile; fileRef = BE241E271B08CB1E00FB7C74 /* MyModal.m */; };
+		BE241E291B08CB1E00FB7C74 /* MyModal.m in Sources */ = {isa = PBXBuildFile; fileRef = BE241E271B08CB1E00FB7C74 /* MyModal.m */; };
 		BE3D60181AF689E8003C70B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3D60171AF689E8003C70B7 /* main.m */; };
 		BE3D601B1AF689E8003C70B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3D601A1AF689E8003C70B7 /* AppDelegate.m */; };
 		BE3D601E1AF689E8003C70B7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3D601D1AF689E8003C70B7 /* ViewController.m */; };
@@ -52,6 +54,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BE241E261B08CB1E00FB7C74 /* MyModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyModal.h; path = CustomBoard/MyModal.h; sourceTree = "<group>"; };
+		BE241E271B08CB1E00FB7C74 /* MyModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyModal.m; path = CustomBoard/MyModal.m; sourceTree = "<group>"; };
 		BE3D60121AF689E8003C70B7 /* CustomKey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomKey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE3D60161AF689E8003C70B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE3D60171AF689E8003C70B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -101,9 +105,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE241E2A1B08CB2700FB7C74 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				BE241E261B08CB1E00FB7C74 /* MyModal.h */,
+				BE241E271B08CB1E00FB7C74 /* MyModal.m */,
+			);
+			name = DB;
+			sourceTree = "<group>";
+		};
 		BE3D60091AF689E8003C70B7 = {
 			isa = PBXGroup;
 			children = (
+				BE241E2A1B08CB2700FB7C74 /* DB */,
 				BE3D60141AF689E8003C70B7 /* CustomKey */,
 				BE3D602E1AF689E8003C70B7 /* CustomKeyTests */,
 				BE3D60401AF68A44003C70B7 /* CustomBoard */,
@@ -331,6 +345,7 @@
 				BE3D601E1AF689E8003C70B7 /* ViewController.m in Sources */,
 				BE3D601B1AF689E8003C70B7 /* AppDelegate.m in Sources */,
 				BE3D60181AF689E8003C70B7 /* main.m in Sources */,
+				BE241E281B08CB1E00FB7C74 /* MyModal.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +361,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE241E291B08CB1E00FB7C74 /* MyModal.m in Sources */,
 				BE3D605F1AF692EE003C70B7 /* keyView.m in Sources */,
 				BE3D60451AF68A44003C70B7 /* KeyboardViewController.m in Sources */,
 			);

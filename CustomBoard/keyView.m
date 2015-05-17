@@ -7,6 +7,7 @@
 //
 
 #import "keyView.h"
+#import "MyModal.h"
 CGFloat const animationConst = 0.5;
 CGFloat const maxTopSegmentedViewHeight = 29.0;
 @interface keyView()
@@ -80,47 +81,17 @@ CGFloat const maxTopSegmentedViewHeight = 29.0;
                                              selector:@selector(didReceiveMessageNotification:)
                                                  name:NSUserDefaultsDidChangeNotification
                                                object:nil];
-    [self registerForNotificationsWithIdentifier:NSUserDefaultsDidChangeNotification];
+    [[MyModal sharedInstance] registerForNotificationsWithIdentifier:NSUserDefaultsDidChangeNotification];
     
     self.heightConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0.0 constant: self.portraitHeight];
     
     [self addConstraint: _heightConstraint];
 }
-- (void)registerForNotificationsWithIdentifier:(NSString *)identifier {
-    CFNotificationCenterRef const center = CFNotificationCenterGetDarwinNotifyCenter();
-    CFStringRef str = (__bridge CFStringRef)identifier;
-    CFNotificationCenterAddObserver(center,
-                                    (__bridge const void *)(self),
-                                    NotificationCallback,
-                                    str,
-                                    NULL,
-                                    CFNotificationSuspensionBehaviorDeliverImmediately);
-}
 
-- (void)unregisterForNotificationsWithIdentifier:(NSString *)identifier {
-    CFNotificationCenterRef const center = CFNotificationCenterGetDarwinNotifyCenter();
-    CFStringRef str = (__bridge CFStringRef)identifier;
-    CFNotificationCenterRemoveObserver(center,
-                                       (__bridge const void *)(self),
-                                       str,
-                                       NULL);
-}
-
-void NotificationCallback(CFNotificationCenterRef center,
-                          void * observer,
-                          CFStringRef name,
-                          void const * object,
-                          CFDictionaryRef userInfo) {
-    NSString *identifier = (__bridge NSString *)name;
-    [[NSNotificationCenter defaultCenter] postNotificationName:NSUserDefaultsDidChangeNotification
-                                                        object:nil
-                                                      userInfo:@{@"identifier" : identifier}];
-}
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [self unregisterForNotificationsWithIdentifier:NSUserDefaultsDidChangeNotification];
-    CFNotificationCenterRef const center = CFNotificationCenterGetDarwinNotifyCenter();
-    CFNotificationCenterRemoveEveryObserver(center, (__bridge const void *)(self));
+    [[MyModal sharedInstance] unregisterForNotificationsWithIdentifier:NSUserDefaultsDidChangeNotification];
+    [[MyModal sharedInstance] removeAllNotification];
 }
 
 -(void)didReceiveMessageNotification:(NSNotification *)notification{
@@ -131,7 +102,6 @@ void NotificationCallback(CFNotificationCenterRef center,
             [btn removeFromSuperview];
         }
         [self addButtons];
-        [self updateValues];
     }else{
         [self updateValues];
         [self updateFrames];
@@ -171,7 +141,7 @@ void NotificationCallback(CFNotificationCenterRef center,
         NSString *str = [NSString stringWithFormat:@"val%d",i];
         NSString *buttonString = [defaults valueForKey:str];
         UIButton *button = nil;
-        if([buttonString length]<1){
+        if(i ==  maxlength){
             button = [self buttonWithTitle:@"Delete" target:self selector:@selector(keyPress:) frame:buttonRect :i];
         }else{
             button = [self buttonWithTitle:buttonString target:self selector:@selector(keyPress:) frame:buttonRect :i];
