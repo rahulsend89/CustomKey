@@ -14,6 +14,7 @@
 @end
 @interface keyView : UIView
 @property (weak, nonatomic) IBOutlet UIButton *nextKeyboardButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topLayoutConstraint;
 @property (nonatomic) id<keyBoardDel> delegate;
 @property (nonatomic) NSMutableArray *allButtons;
 @property (weak, nonatomic) IBOutlet UIScrollView *myScrollView;

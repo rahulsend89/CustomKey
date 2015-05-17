@@ -7,19 +7,73 @@
 //
 
 #import "keyView.h"
-
+CGFloat const animationConst = 0.5;
+CGFloat const maxTopSegmentedViewHeight = 29.0;
+@interface keyView()
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedView;
+@property (nonatomic)CGFloat portraitHeight;
+@property (nonatomic)CGFloat landscapeHeight;
+@property (nonatomic)CGFloat addHeight;
+@property (nonatomic)NSLayoutConstraint *heightConstraint;
+@property (nonatomic)BOOL isLandscape;
+@end
 @implementation keyView
 - (IBAction)keyPress:(UIButton*)sender {
     if([sender.titleLabel.text isEqualToString:@"Delete"]){
         [self delete:sender];
     }else{
-        [[self delegate] KeyPressedWithString:sender.titleLabel.text];
+        NSArray *segArray = @[@"",@"Reaching",@"Crossing",@"Crossed"];
+        if (![segArray[self.segmentedView.selectedSegmentIndex] isEqualToString:@""]) {
+            [[self delegate] KeyPressedWithString:[NSString stringWithFormat:@"%@ %@",segArray[self.segmentedView.selectedSegmentIndex],sender.titleLabel.text]];
+        }else{
+            [[self delegate] KeyPressedWithString:sender.titleLabel.text];
+        }
     }
 }
+- (IBAction)alterDefaults:(id)sender {
+    self.addHeight =  (self.addHeight<20)?maxTopSegmentedViewHeight:0.0;
+    if (self.isLandscape) {
+        self.heightConstraint.constant = self.landscapeHeight+self.addHeight;
+    } else {
+        self.heightConstraint.constant = self.portraitHeight+self.addHeight;
+    }
+    [[self topLayoutConstraint] setConstant:self.addHeight];
+    [self.segmentedView setHidden:NO];
+    [UIView animateWithDuration:animationConst animations:^{
+        [self segmentedView].alpha = (self.addHeight<20)?0.0:1.0;
+        [self layoutIfNeeded];
+    }];
+}
+
+- (void)updateViewConstraints {
+    // Add custom view sizing constraints here
+    if (self.frame.size.width == 0 || self.frame.size.height == 0)
+        return;
+    CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+    CGFloat screenH = screenSize.height;
+    CGFloat screenW = screenSize.width;
+    BOOL isLandscape =  !(self.frame.size.width ==
+                          (screenW*(screenW<screenH))+(screenH*(screenW>screenH)));
+    NSLog(isLandscape ? @"Screen: Landscape" : @"Screen: Potriaint");
+    self.isLandscape = isLandscape;
+    if (isLandscape) {
+        self.heightConstraint.constant = self.landscapeHeight+self.addHeight;
+    } else {
+        self.heightConstraint.constant = self.portraitHeight+self.addHeight;
+    }
+    
+}
+
+
 - (IBAction)delete:(id)sender {
     [[self delegate] deletePress];
 }
 -(void)initVariables{
+    [self segmentedView].alpha = 0.0f;
+    [self.segmentedView setHidden:YES];
+    self.portraitHeight = 256;
+    self.landscapeHeight = 203;
+    self.addHeight = 0.0f;
     self.allButtons = [NSMutableArray array];
     [self addButtons];
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -27,6 +81,10 @@
                                                  name:NSUserDefaultsDidChangeNotification
                                                object:nil];
     [self registerForNotificationsWithIdentifier:NSUserDefaultsDidChangeNotification];
+    
+    self.heightConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0.0 constant: self.portraitHeight];
+    
+    [self addConstraint: _heightConstraint];
 }
 - (void)registerForNotificationsWithIdentifier:(NSString *)identifier {
     CFNotificationCenterRef const center = CFNotificationCenterGetDarwinNotifyCenter();
@@ -49,10 +107,10 @@
 }
 
 void NotificationCallback(CFNotificationCenterRef center,
-                                  void * observer,
-                                  CFStringRef name,
-                                  void const * object,
-                                  CFDictionaryRef userInfo) {
+                          void * observer,
+                          CFStringRef name,
+                          void const * object,
+                          CFDictionaryRef userInfo) {
     NSString *identifier = (__bridge NSString *)name;
     [[NSNotificationCenter defaultCenter] postNotificationName:NSUserDefaultsDidChangeNotification
                                                         object:nil
@@ -119,7 +177,7 @@ void NotificationCallback(CFNotificationCenterRef center,
             button = [self buttonWithTitle:buttonString target:self selector:@selector(keyPress:) frame:buttonRect :i];
         }
         [self.myScrollView addSubview:button];
-        [self.myScrollView setContentInset:UIEdgeInsetsMake(-height, self.myScrollView.frame.origin.y, ypos+(height+(yspace*i))-height, 0.0f)];
+        [self.myScrollView setContentInset:UIEdgeInsetsMake(-height, 0.0f, ypos+(height+(yspace*i))-height, 0.0f)];
         [self.allButtons addObject:button];
     }
 }
