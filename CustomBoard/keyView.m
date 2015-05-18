@@ -9,7 +9,7 @@
 #import "keyView.h"
 #import "MyModal.h"
 CGFloat const animationConst = 0.5;
-CGFloat const maxTopSegmentedViewHeight = 29.0;
+CGFloat const maxTopSegmentedViewHeight = 30.0;
 @interface keyView()
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedView;
 @property (nonatomic)CGFloat portraitHeight;
@@ -70,11 +70,11 @@ CGFloat const maxTopSegmentedViewHeight = 29.0;
     [[self delegate] deletePress];
 }
 -(void)initVariables{
-    [self segmentedView].alpha = 0.0f;
-    [self.segmentedView setHidden:YES];
+    [self segmentedView].alpha = 1.0f;
+    [self.segmentedView setHidden:NO];
     self.portraitHeight = 256;
     self.landscapeHeight = 203;
-    self.addHeight = 0.0f;
+    self.addHeight = maxTopSegmentedViewHeight;
     self.allButtons = [NSMutableArray array];
     [self addButtons];
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -83,9 +83,10 @@ CGFloat const maxTopSegmentedViewHeight = 29.0;
                                                object:nil];
     [[MyModal sharedInstance] registerForNotificationsWithIdentifier:NSUserDefaultsDidChangeNotification];
     
-    self.heightConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0.0 constant: self.portraitHeight];
-    
+    self.heightConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0.0 constant: self.portraitHeight+self.addHeight];
+    //[[self topLayoutConstraint] setConstant:self.addHeight];
     [self addConstraint: _heightConstraint];
+    [self updateViewConstraints];
 }
 
 - (void)dealloc {
