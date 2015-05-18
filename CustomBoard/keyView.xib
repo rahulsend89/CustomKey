@@ -7,11 +7,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="keyView">
-            <rect key="frame" x="0.0" y="1" width="494" height="298"/>
+            <rect key="frame" x="0.0" y="-1" width="494" height="353"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YID-vc-d5R">
-                    <rect key="frame" x="0.0" y="30" width="44" height="268"/>
+                    <rect key="frame" x="0.0" y="30" width="44" height="323"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="44" id="OfS-qa-Rdc"/>
@@ -22,7 +22,7 @@
                     </state>
                 </button>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UlB-Cn-qNY">
-                    <rect key="frame" x="44" y="30" width="450" height="268"/>
+                    <rect key="frame" x="44" y="30" width="450" height="323"/>
                 </scrollView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JaZ-DH-8pw">
                     <rect key="frame" x="-1" y="0.0" width="48" height="30"/>
@@ -52,38 +52,26 @@
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="YID-vc-d5R" firstAttribute="top" secondItem="JaZ-DH-8pw" secondAttribute="top" constant="30" id="4dY-9Z-f2K"/>
-                <constraint firstAttribute="trailing" secondItem="JaZ-DH-8pw" secondAttribute="trailing" id="5Ly-IY-JGp"/>
                 <constraint firstItem="JaZ-DH-8pw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="6bD-6U-wv3"/>
                 <constraint firstAttribute="trailing" secondItem="ZSc-1Y-zIr" secondAttribute="trailing" id="92T-EA-rFz"/>
                 <constraint firstItem="YID-vc-d5R" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Fz3-sH-RbM"/>
                 <constraint firstAttribute="bottom" secondItem="UlB-Cn-qNY" secondAttribute="bottom" id="Fzt-86-BUR"/>
-                <constraint firstItem="UlB-Cn-qNY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="44" id="LVe-wE-pgY"/>
                 <constraint firstAttribute="bottom" secondItem="YID-vc-d5R" secondAttribute="bottom" id="MIC-jc-PZD"/>
                 <constraint firstItem="JaZ-DH-8pw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="-1" id="QTq-bc-i62"/>
-                <constraint firstItem="YID-vc-d5R" firstAttribute="width" secondItem="ZSc-1Y-zIr" secondAttribute="width" id="ZJj-Sr-Grq"/>
                 <constraint firstItem="ZSc-1Y-zIr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="aRJ-gT-zfR"/>
-                <constraint firstItem="ZSc-1Y-zIr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="e6M-ST-C8z"/>
                 <constraint firstAttribute="trailing" secondItem="UlB-Cn-qNY" secondAttribute="trailing" id="fxU-iy-nRS"/>
-                <constraint firstItem="UlB-Cn-qNY" firstAttribute="top" secondItem="YID-vc-d5R" secondAttribute="top" id="vqh-iO-kHA"/>
+                <constraint firstItem="UlB-Cn-qNY" firstAttribute="top" secondItem="ZSc-1Y-zIr" secondAttribute="bottom" constant="2" id="jVH-Zs-hrg"/>
                 <constraint firstItem="UlB-Cn-qNY" firstAttribute="width" secondItem="ZSc-1Y-zIr" secondAttribute="width" id="xEk-el-9sw"/>
                 <constraint firstItem="UlB-Cn-qNY" firstAttribute="leading" secondItem="YID-vc-d5R" secondAttribute="trailing" id="yRC-qI-6sM"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="5Ly-IY-JGp"/>
-                    <exclude reference="ZJj-Sr-Grq"/>
-                    <exclude reference="e6M-ST-C8z"/>
-                    <exclude reference="LVe-wE-pgY"/>
-                </mask>
-            </variation>
             <connections>
                 <outlet property="myScrollView" destination="UlB-Cn-qNY" id="8bx-2F-uZP"/>
                 <outlet property="nextKeyboardButton" destination="YID-vc-d5R" id="rFd-5R-pBE"/>
                 <outlet property="segmentedView" destination="ZSc-1Y-zIr" id="Ged-nh-FCW"/>
-                <outlet property="topLayoutConstraint" destination="6bD-6U-wv3" id="8kh-un-a0I"/>
+                <outlet property="topLayoutConstraint" destination="UGr-R1-fQ0" id="A2P-mB-gKl"/>
             </connections>
-            <point key="canvasLocation" x="372" y="425"/>
+            <point key="canvasLocation" x="372" y="397.5"/>
         </view>
     </objects>
 </document>
