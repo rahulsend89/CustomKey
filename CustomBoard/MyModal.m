@@ -23,7 +23,7 @@
     }
 }
 -(void)resetData{
-    NSArray *defaultData = @[@"Bus Started",@"Srishti",@"Reaching Highway",@"Highway",@"Reaching Toll",@"Crossing Toll",@"Rivali park",@"Sai Dham",@"Growels"];
+    NSArray *defaultData = @[@"Bus Started",@"Srishti",@"Highway",@"Toll",@"Gokul Anand",@"National Park",@"Rivali park",@"Sai Dham",@"Growels"];
     NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.myKey"];
     [defaults setInteger:9 forKey:@"maxLen"];
     [defaults synchronize];

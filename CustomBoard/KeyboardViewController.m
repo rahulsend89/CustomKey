@@ -33,7 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.keyboard = [[[NSBundle mainBundle] loadNibNamed:@"keyView" owner:nil options:nil] objectAtIndex:0];
-    self.inputView = self.keyboard;
+    self.inputView = (id)self.keyboard;
     [self.keyboard initVariables];
     self.keyboard.delegate = self;
     self.nextKeyboardButton = self.keyboard.nextKeyboardButton;
