@@ -39,6 +39,7 @@
     
     // If appropriate, configure the new managed object.
     // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
+    
     [newManagedObject setValue:[NSString stringWithFormat:@"%@",[NSDate date]] forKey:@"tableData"];
     
     // Save the context.
