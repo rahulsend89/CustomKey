@@ -96,7 +96,7 @@ CGFloat const maxTopSegmentedViewHeight = 30.0;
 }
 
 -(void)didReceiveMessageNotification:(NSNotification *)notification{
-    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.myKey"];
+    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:kGroupKey];
     NSInteger maxlength = [defaults integerForKey:@"maxLen"];
     if(maxlength !=self.allButtons.count-1){
         for (UIButton *btn in self.allButtons) {
@@ -121,7 +121,7 @@ CGFloat const maxTopSegmentedViewHeight = 30.0;
     return button;
 }
 -(void)addButtons{
-    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.myKey"];
+    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:kGroupKey];
     NSInteger maxlength = [defaults integerForKey:@"maxLen"];
     CGFloat ypos = 0.0f;
     CGFloat xspace = 5.0f;
@@ -174,7 +174,7 @@ CGFloat const maxTopSegmentedViewHeight = 30.0;
     }
 }
 -(void)updateValues{
-    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.myKey"];
+    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:kGroupKey];
     [defaults synchronize];
     int i=0;
     int maxLen = (int)self.allButtons.count;

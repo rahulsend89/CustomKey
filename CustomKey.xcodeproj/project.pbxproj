@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		034A6EF31B427705001514B2 /* MyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 034A6EF21B427705001514B2 /* MyTableViewController.m */; };
+		034A6F2D1B428E1B001514B2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 034A6F2C1B428E1B001514B2 /* CoreData.framework */; };
+		034A6F2E1B428E37001514B2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 034A6F2C1B428E1B001514B2 /* CoreData.framework */; };
+		034A6F361B4291C4001514B2 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 034A6F351B4291C4001514B2 /* DetailViewController.m */; };
+		034A6F401B429788001514B2 /* keyTable.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 034A6F3E1B429788001514B2 /* keyTable.xcdatamodeld */; };
+		034A6F411B429788001514B2 /* keyTable.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 034A6F3E1B429788001514B2 /* keyTable.xcdatamodeld */; };
 		BE241E281B08CB1E00FB7C74 /* MyModal.m in Sources */ = {isa = PBXBuildFile; fileRef = BE241E271B08CB1E00FB7C74 /* MyModal.m */; };
 		BE241E291B08CB1E00FB7C74 /* MyModal.m in Sources */ = {isa = PBXBuildFile; fileRef = BE241E271B08CB1E00FB7C74 /* MyModal.m */; };
 		BE3D60181AF689E8003C70B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3D60171AF689E8003C70B7 /* main.m */; };
@@ -54,6 +60,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		034A6EF11B427705001514B2 /* MyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewController.h; sourceTree = "<group>"; };
+		034A6EF21B427705001514B2 /* MyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewController.m; sourceTree = "<group>"; };
+		034A6F2C1B428E1B001514B2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		034A6F341B4291C4001514B2 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		034A6F351B4291C4001514B2 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		034A6F3F1B429788001514B2 /* keyTable.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = keyTable.xcdatamodel; sourceTree = "<group>"; };
 		BE241E261B08CB1E00FB7C74 /* MyModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyModal.h; path = CustomBoard/MyModal.h; sourceTree = "<group>"; };
 		BE241E271B08CB1E00FB7C74 /* MyModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyModal.m; path = CustomBoard/MyModal.m; sourceTree = "<group>"; };
 		BE3D60121AF689E8003C70B7 /* CustomKey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomKey.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				034A6F2D1B428E1B001514B2 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,15 +112,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				034A6F2E1B428E37001514B2 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		034A6F2F1B428E4F001514B2 /* framework */ = {
+			isa = PBXGroup;
+			children = (
+				034A6F2C1B428E1B001514B2 /* CoreData.framework */,
+			);
+			name = framework;
+			sourceTree = "<group>";
+		};
 		BE241E2A1B08CB2700FB7C74 /* DB */ = {
 			isa = PBXGroup;
 			children = (
+				034A6F2F1B428E4F001514B2 /* framework */,
 				BE241E261B08CB1E00FB7C74 /* MyModal.h */,
 				BE241E271B08CB1E00FB7C74 /* MyModal.m */,
 			);
@@ -117,6 +140,7 @@
 		BE3D60091AF689E8003C70B7 = {
 			isa = PBXGroup;
 			children = (
+				034A6F3E1B429788001514B2 /* keyTable.xcdatamodeld */,
 				BE241E2A1B08CB2700FB7C74 /* DB */,
 				BE3D60141AF689E8003C70B7 /* CustomKey */,
 				BE3D602E1AF689E8003C70B7 /* CustomKeyTests */,
@@ -143,6 +167,10 @@
 				BE3D601A1AF689E8003C70B7 /* AppDelegate.m */,
 				BE3D601C1AF689E8003C70B7 /* ViewController.h */,
 				BE3D601D1AF689E8003C70B7 /* ViewController.m */,
+				034A6EF11B427705001514B2 /* MyTableViewController.h */,
+				034A6EF21B427705001514B2 /* MyTableViewController.m */,
+				034A6F341B4291C4001514B2 /* DetailViewController.h */,
+				034A6F351B4291C4001514B2 /* DetailViewController.m */,
 				BE3D601F1AF689E8003C70B7 /* Main.storyboard */,
 				BE3D60221AF689E8003C70B7 /* Images.xcassets */,
 				BE3D60241AF689E8003C70B7 /* LaunchScreen.xib */,
@@ -285,6 +313,9 @@
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
 							};
+							com.apple.iCloud = {
+								enabled = 0;
+							};
 						};
 					};
 				};
@@ -343,9 +374,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE3D601E1AF689E8003C70B7 /* ViewController.m in Sources */,
+				034A6F401B429788001514B2 /* keyTable.xcdatamodeld in Sources */,
+				034A6EF31B427705001514B2 /* MyTableViewController.m in Sources */,
 				BE3D601B1AF689E8003C70B7 /* AppDelegate.m in Sources */,
 				BE3D60181AF689E8003C70B7 /* main.m in Sources */,
 				BE241E281B08CB1E00FB7C74 /* MyModal.m in Sources */,
+				034A6F361B4291C4001514B2 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +397,7 @@
 			files = (
 				BE241E291B08CB1E00FB7C74 /* MyModal.m in Sources */,
 				BE3D605F1AF692EE003C70B7 /* keyView.m in Sources */,
+				034A6F411B429788001514B2 /* keyTable.xcdatamodeld in Sources */,
 				BE3D60451AF68A44003C70B7 /* KeyboardViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -616,6 +651,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		034A6F3E1B429788001514B2 /* keyTable.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				034A6F3F1B429788001514B2 /* keyTable.xcdatamodel */,
+			);
+			currentVersion = 034A6F3F1B429788001514B2 /* keyTable.xcdatamodel */;
+			path = keyTable.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BE3D600A1AF689E8003C70B7 /* Project object */;
 }

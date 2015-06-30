@@ -17,7 +17,7 @@
     [[MyModal sharedInstance] updateValuesWithString:[self.mytext text] forKey:@""];
 }
 -(void)initValues{
-    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.myKey"];
+    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:kGroupKey];
     NSMutableString *appendString = [NSMutableString stringWithString:@""];
     NSInteger maxlength = [defaults integerForKey:@"maxLen"];
     if(!maxlength){

@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-
+#import "MyTableViewController.h"
+#import "MyModal.h"
 @interface AppDelegate ()
 
 @end
@@ -17,6 +18,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+    MyTableViewController *controller = (MyTableViewController *)navigationController.topViewController;
+    controller.managedObjectContext = [[MyModal sharedInstance] managedObjectContext];
     return YES;
 }
 

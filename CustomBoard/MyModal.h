@@ -7,8 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <CoreData/CoreData.h>
+FOUNDATION_EXPORT NSString *const kGroupKey;
 @interface MyModal : NSObject
+
+@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
+@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+
+- (void)saveContext;
+- (NSURL *)applicationDocumentsDirectory;
+
+
 + (MyModal*)sharedInstance;
 -(void)initMyDBIfNeeded;
 -(void)updateValuesWithString:(NSString*)myString forKey:(NSString*)key;
