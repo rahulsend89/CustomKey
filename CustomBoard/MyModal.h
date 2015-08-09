@@ -21,8 +21,10 @@ FOUNDATION_EXPORT NSString *const kGroupKey;
 
 + (MyModal*)sharedInstance;
 -(void)initMyDBIfNeeded;
--(void)updateValuesWithString:(NSString*)myString forKey:(NSString*)key;
+-(NSString*)getValueForKey:(NSString*)defaultKey;
+-(void)updateValuesWithString:(NSString*)myString forKey:(NSString*)defaultKey;
 - (void)registerForNotificationsWithIdentifier:(NSString *)identifier;
 - (void)unregisterForNotificationsWithIdentifier:(NSString *)identifier;
 -(void)removeAllNotification;
+-(NSString *)getDefaultKeyGroup;
 @end

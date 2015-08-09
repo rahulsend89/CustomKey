@@ -7,12 +7,18 @@
 //
 
 #import "DetailViewController.h"
+#import "MyModal.h"
 
 @interface DetailViewController ()
 
 @end
 
 @implementation DetailViewController
+
+- (IBAction)SaveDataDidPressed:(UIButton *)sender {
+    NSString *keyVal = [[self.detailItem valueForKey:@"tableData"] description];
+    [[MyModal sharedInstance] updateValuesWithString:self.detailDescriptionLabel.text forKey:keyVal];
+}
 
 #pragma mark - Managing the detail item
 
@@ -28,7 +34,8 @@
 - (void)configureView {
     // Update the user interface for the detail item.
     if (self.detailItem) {
-        self.detailDescriptionLabel.text = [[self.detailItem valueForKey:@"tableData"] description];
+        NSString *keyVal = [[self.detailItem valueForKey:@"tableData"] description];
+        self.detailDescriptionLabel.text = [[MyModal sharedInstance] getValueForKey:keyVal];
     }
 }
 

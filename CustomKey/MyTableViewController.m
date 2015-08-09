@@ -25,13 +25,26 @@
     
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
+    [self checkIfDefaultDataNeedToUpdate];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)checkIfDefaultDataNeedToUpdate{
+    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][0];
+    int maxCount = (int)[sectionInfo numberOfObjects];
+    if (!maxCount) {
+        [self InitWithDefaultData];
+    }
+    
+}
+-(void)InitWithDefaultData{
+    [[MyModal sharedInstance] initMyDBIfNeeded];
+    [self insertNewObject:nil];
+    [[self tableView] reloadData];
+}
 - (void)insertNewObject:(id)sender {
     NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
     NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
@@ -43,6 +56,9 @@
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][0];
     int maxCount = (int)[sectionInfo numberOfObjects];
     NSString *appededString = [NSString stringWithFormat:@"CustomKeyNode:%d",maxCount];
+    if (!maxCount) {
+        appededString = @"Default";
+    }
     
     [newManagedObject setValue:appededString forKey:@"tableData"];
     

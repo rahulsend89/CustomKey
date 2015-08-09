@@ -8,6 +8,8 @@
 
 #import "MyModal.h"
 #define defaultsVal @"firstStart"
+#define maxLenKey @"maxLen"
+#define defaultKeyGroup @"defaultKeyGroup"
 NSString * const kGroupKey = @"group.myKey";
 @implementation MyModal
 + (MyModal*)sharedInstance{
@@ -23,35 +25,67 @@ NSString * const kGroupKey = @"group.myKey";
         [self resetData];
     }
 }
+-(NSString*)getValueForKey:(NSString*)defaultKey{
+    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:kGroupKey];
+    if (!defaultKey) {
+        defaultKey = [defaults valueForKey:defaultKeyGroup];
+    }
+    NSMutableString *appendString = [NSMutableString stringWithString:@""];
+    NSInteger maxlength = [defaults integerForKey:[NSString stringWithFormat:@"%@:%@",defaultKey,maxLenKey]];
+    if(!maxlength){
+        [[MyModal sharedInstance] initMyDBIfNeeded];
+    }
+    for (int i=0; i<maxlength; i++) {
+        NSString *str = [NSString stringWithFormat:@"%@:val%d",defaultKey,i];
+        [appendString appendString:[defaults valueForKey:str]];
+        [appendString appendString:@"\n"];
+    }
+    return appendString;
+}
+-(NSString *)getDefaultKeyGroup{
+    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:kGroupKey];
+    NSString *defaultKey = [defaults valueForKey:defaultKeyGroup];
+    return defaultKey;
+}
+-(void)setDefaultKeyGroup:(NSString*)defaultKey{
+    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:kGroupKey];
+    [defaults setValue:defaultKey forKey:defaultKeyGroup];
+    [defaults synchronize];
+}
 -(void)resetData{
+    NSString *defaultKey = @"Default";
     NSArray *defaultData = @[@"Bus Started",@"Srishti",@"Highway",@"Toll",@"Gokul Anand",@"National Park",@"Rivali park",@"Sai Dham",@"Growels"];
     NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:kGroupKey];
-    [defaults setInteger:9 forKey:@"maxLen"];
+    [defaults setInteger:9 forKey:[NSString stringWithFormat:@"%@:maxLen",defaultKey]];
     [defaults synchronize];
     for (int i =0; i<9; i++) {
-        NSString *strVal = [NSString stringWithFormat:@"val%d",i];
+        NSString *strVal = [NSString stringWithFormat:@"%@:val%d",defaultKey,i];
         [defaults setObject:[defaultData objectAtIndex:i] forKey:strVal];
         [defaults synchronize];
     }
+    [defaults setValue:defaultKey forKey:defaultKeyGroup];
     [defaults setBool:YES forKey:defaultsVal];
     [defaults synchronize];
 }
 
 //Notification Helper function
 
--(void)updateValuesWithString:(NSString*)myString forKey:(NSString*)key{
+-(void)updateValuesWithString:(NSString*)myString forKey:(NSString*)defaultKey{
     NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:kGroupKey];
+    if (!defaultKey) {
+        defaultKey = [defaults valueForKey:defaultKeyGroup];
+    }
     int i=0;
     NSArray *array = [myString componentsSeparatedByString:@"\n"];
     for (NSString *childString in array) {
         NSString *str = [NSString stringWithFormat:@"val%d",i];
         if(![childString isEqual:@""]){
-            [defaults setObject:childString forKey:str];
+            [defaults setObject:childString forKey:[NSString stringWithFormat:@"%@:%@",defaultKey,str]];
             [defaults synchronize];
             i++;
         }
     }
-    [defaults setInteger:i forKey:@"maxLen"];
+    [defaults setInteger:i forKey:[NSString stringWithFormat:@"%@:%@",defaultKey,maxLenKey]];
     [defaults synchronize];
     [self sendNotificationForMessageWithIdentifier:NSUserDefaultsDidChangeNotification];
 }

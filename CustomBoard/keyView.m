@@ -122,6 +122,7 @@ CGFloat const maxTopSegmentedViewHeight = 30.0;
 }
 -(void)addButtons{
     NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:kGroupKey];
+    NSString *defaultKey = @"Default";
     NSInteger maxlength = [defaults integerForKey:@"maxLen"];
     CGFloat ypos = 0.0f;
     CGFloat xspace = 5.0f;
@@ -172,6 +173,9 @@ CGFloat const maxTopSegmentedViewHeight = 30.0;
         [btn setFrame:CGRectMake(xpos, ypos, width, height)];
         i++;
     }
+}
+-(void)updateValuesForKey : (NSString*)defaultKey{
+    
 }
 -(void)updateValues{
     NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:kGroupKey];
