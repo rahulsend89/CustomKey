@@ -65,6 +65,11 @@ CGFloat const maxTopSegmentedViewHeight = 30.0;
     
 }
 
+- (IBAction)ChangeGroupDefault:(id)sender{
+    if([[self delegate] respondsToSelector:@selector(ChangeGroupDefault)]){
+        [[self delegate] ChangeGroupDefault];
+    }
+}
 
 - (IBAction)delete:(id)sender {
     [[self delegate] deletePress];
@@ -97,7 +102,7 @@ CGFloat const maxTopSegmentedViewHeight = 30.0;
 
 -(void)didReceiveMessageNotification:(NSNotification *)notification{
     NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:kGroupKey];
-    NSInteger maxlength = [defaults integerForKey:@"maxLen"];
+    NSInteger maxlength = [defaults integerForKey:[NSString stringWithFormat:@"%@:maxLen",[[MyModal sharedInstance] getDefaultKeyGroup]]];
     if(maxlength !=self.allButtons.count-1){
         for (UIButton *btn in self.allButtons) {
             [btn removeFromSuperview];
@@ -122,8 +127,7 @@ CGFloat const maxTopSegmentedViewHeight = 30.0;
 }
 -(void)addButtons{
     NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:kGroupKey];
-    NSString *defaultKey = @"Default";
-    NSInteger maxlength = [defaults integerForKey:@"maxLen"];
+    NSInteger maxlength = [defaults integerForKey:[NSString stringWithFormat:@"%@:maxLen",[[MyModal sharedInstance] getDefaultKeyGroup]]];
     CGFloat ypos = 0.0f;
     CGFloat xspace = 5.0f;
     CGFloat yspace = 5.0f;
@@ -140,7 +144,7 @@ CGFloat const maxTopSegmentedViewHeight = 30.0;
             xpos+= xspace+width;
         }
         CGRect buttonRect = CGRectMake(xpos, ypos, width, height);
-        NSString *str = [NSString stringWithFormat:@"val%d",i];
+        NSString *str = [NSString stringWithFormat:@"%@val%d",[[MyModal sharedInstance] getDefaultKeyGroup],i];
         NSString *buttonString = [defaults valueForKey:str];
         UIButton *button = nil;
         if(i ==  maxlength){
@@ -183,7 +187,7 @@ CGFloat const maxTopSegmentedViewHeight = 30.0;
     int i=0;
     int maxLen = (int)self.allButtons.count;
     for (UIButton *btn in self.allButtons) {
-        NSString *str = [NSString stringWithFormat:@"val%d",i];
+        NSString *str = [NSString stringWithFormat:@"%@:val%d",[[MyModal sharedInstance] getDefaultKeyGroup],i];
         if(i== (maxLen-1)){
             [btn setTitle:@"Delete" forState:UIControlStateNormal];
         }else{

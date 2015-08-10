@@ -54,6 +54,16 @@
         [self.textDocumentProxy deleteBackward];
     }
 }
+-(void)ChangeGroupDefault{
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[MyModal sharedInstance].fetchedResultsController sections][0];
+    //int maxNum = (int)[sectionInfo numberOfObjects];
+    NSArray *array = [sectionInfo objects];
+    [array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSLog(@"obj : %@",[[obj valueForKey:@"tableData"] description]);
+    }];
+//    NSManagedObject *object = [[MyModal sharedInstance].fetchedResultsController objectAtIndexPath:indexPath];
+//    cell.textLabel.text = [[object valueForKey:@"tableData"] description];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated

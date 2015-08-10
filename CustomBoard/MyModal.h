@@ -13,6 +13,7 @@ FOUNDATION_EXPORT NSString *const kGroupKey;
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 - (void)saveContext;
@@ -21,6 +22,7 @@ FOUNDATION_EXPORT NSString *const kGroupKey;
 
 + (MyModal*)sharedInstance;
 -(void)initMyDBIfNeeded;
+- (void)insertNewObject:(id)sender;
 -(NSString*)getValueForKey:(NSString*)defaultKey;
 -(void)updateValuesWithString:(NSString*)myString forKey:(NSString*)defaultKey;
 - (void)registerForNotificationsWithIdentifier:(NSString *)identifier;

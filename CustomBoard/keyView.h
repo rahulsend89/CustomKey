@@ -11,6 +11,8 @@
 
 -(void)KeyPressedWithString:(NSString*)string;
 -(void)deletePress;
+@optional
+-(void)ChangeGroupDefault;
 @end
 @interface keyView : UIView
 @property (weak, nonatomic) IBOutlet UIButton *nextKeyboardButton;

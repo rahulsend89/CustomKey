@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -11,10 +11,24 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YID-vc-d5R">
-                    <rect key="frame" x="0.0" y="30" width="44" height="323"/>
+                    <rect key="frame" x="0.0" y="30" width="44" height="160"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="44" id="OfS-qa-Rdc"/>
+                        <constraint firstAttribute="width" constant="44" id="MU5-75-9dE"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
+                    <state key="normal" title="Default">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="ChangeGroupDefault:" destination="iN0-l3-epB" eventType="touchUpInside" id="5A8-45-toP"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9b2-EX-3je">
+                    <rect key="frame" x="0.0" y="193" width="44" height="160"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="44" id="VOg-fp-adw"/>
                     </constraints>
                     <state key="normal" title="Back">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -54,20 +68,36 @@
                 <constraint firstItem="YID-vc-d5R" firstAttribute="top" secondItem="JaZ-DH-8pw" secondAttribute="top" constant="30" id="4dY-9Z-f2K"/>
                 <constraint firstItem="JaZ-DH-8pw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="6bD-6U-wv3"/>
                 <constraint firstAttribute="trailing" secondItem="ZSc-1Y-zIr" secondAttribute="trailing" id="92T-EA-rFz"/>
+                <constraint firstItem="UlB-Cn-qNY" firstAttribute="leading" secondItem="9b2-EX-3je" secondAttribute="trailing" id="AQY-Wq-PIU"/>
+                <constraint firstItem="9b2-EX-3je" firstAttribute="top" secondItem="YID-vc-d5R" secondAttribute="bottom" constant="3" id="Ehh-ec-u9s"/>
                 <constraint firstItem="YID-vc-d5R" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Fz3-sH-RbM"/>
                 <constraint firstAttribute="bottom" secondItem="UlB-Cn-qNY" secondAttribute="bottom" id="Fzt-86-BUR"/>
-                <constraint firstAttribute="bottom" secondItem="YID-vc-d5R" secondAttribute="bottom" id="MIC-jc-PZD"/>
+                <constraint firstAttribute="bottom" secondItem="YID-vc-d5R" secondAttribute="bottom" constant="150" id="MIC-jc-PZD"/>
                 <constraint firstItem="JaZ-DH-8pw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="-1" id="QTq-bc-i62"/>
+                <constraint firstItem="9b2-EX-3je" firstAttribute="height" secondItem="YID-vc-d5R" secondAttribute="height" id="RZD-1g-xRG"/>
+                <constraint firstItem="YID-vc-d5R" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="YOP-Bq-9A5"/>
+                <constraint firstItem="9b2-EX-3je" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="YYW-eM-wEZ"/>
                 <constraint firstItem="ZSc-1Y-zIr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="aRJ-gT-zfR"/>
                 <constraint firstAttribute="trailing" secondItem="UlB-Cn-qNY" secondAttribute="trailing" id="fxU-iy-nRS"/>
                 <constraint firstItem="UlB-Cn-qNY" firstAttribute="top" secondItem="ZSc-1Y-zIr" secondAttribute="bottom" constant="2" id="jVH-Zs-hrg"/>
+                <constraint firstItem="YID-vc-d5R" firstAttribute="top" secondItem="JaZ-DH-8pw" secondAttribute="bottom" id="mL0-3y-a4j"/>
+                <constraint firstAttribute="bottom" secondItem="9b2-EX-3je" secondAttribute="bottom" id="pK2-I6-CDM"/>
+                <constraint firstItem="UlB-Cn-qNY" firstAttribute="leading" secondItem="YID-vc-d5R" secondAttribute="trailing" id="uVX-Zt-b5M"/>
                 <constraint firstItem="UlB-Cn-qNY" firstAttribute="width" secondItem="ZSc-1Y-zIr" secondAttribute="width" id="xEk-el-9sw"/>
                 <constraint firstItem="UlB-Cn-qNY" firstAttribute="leading" secondItem="YID-vc-d5R" secondAttribute="trailing" id="yRC-qI-6sM"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="4dY-9Z-f2K"/>
+                    <exclude reference="Fz3-sH-RbM"/>
+                    <exclude reference="MIC-jc-PZD"/>
+                    <exclude reference="yRC-qI-6sM"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="myScrollView" destination="UlB-Cn-qNY" id="8bx-2F-uZP"/>
-                <outlet property="nextKeyboardButton" destination="YID-vc-d5R" id="rFd-5R-pBE"/>
+                <outlet property="nextKeyboardButton" destination="9b2-EX-3je" id="Iin-3v-PdW"/>
                 <outlet property="segmentedView" destination="ZSc-1Y-zIr" id="Ged-nh-FCW"/>
                 <outlet property="topLayoutConstraint" destination="UGr-R1-fQ0" id="A2P-mB-gKl"/>
             </connections>
