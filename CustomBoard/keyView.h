@@ -20,6 +20,7 @@
 @property (nonatomic) id<keyBoardDel> delegate;
 @property (nonatomic) NSMutableArray *allButtons;
 @property (weak, nonatomic) IBOutlet UIScrollView *myScrollView;
+-(void)didReceiveMessageNotification:(NSNotification *)notification;
 -(void)initVariables;
 -(void)updateValues;
 -(void)updateFrames;

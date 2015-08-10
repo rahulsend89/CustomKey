@@ -16,6 +16,7 @@ CGFloat const maxTopSegmentedViewHeight = 30.0;
 @property (nonatomic)CGFloat landscapeHeight;
 @property (nonatomic)CGFloat addHeight;
 @property (nonatomic)NSLayoutConstraint *heightConstraint;
+@property (weak, nonatomic) IBOutlet UIButton *defaultGroupBtn;
 @property (nonatomic)BOOL isLandscape;
 @end
 @implementation keyView
@@ -68,6 +69,7 @@ CGFloat const maxTopSegmentedViewHeight = 30.0;
 - (IBAction)ChangeGroupDefault:(id)sender{
     if([[self delegate] respondsToSelector:@selector(ChangeGroupDefault)]){
         [[self delegate] ChangeGroupDefault];
+        [[self defaultGroupBtn] setTitle:[[MyModal sharedInstance] getDefaultKeyGroup] forState:UIControlStateNormal];
     }
 }
 
@@ -91,6 +93,7 @@ CGFloat const maxTopSegmentedViewHeight = 30.0;
     self.heightConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0.0 constant: self.portraitHeight+self.addHeight];
     //[[self topLayoutConstraint] setConstant:self.addHeight];
     [self addConstraint: _heightConstraint];
+    [[self defaultGroupBtn] setTitle:[[MyModal sharedInstance] getDefaultKeyGroup] forState:UIControlStateNormal];
     [self updateViewConstraints];
 }
 
@@ -144,7 +147,7 @@ CGFloat const maxTopSegmentedViewHeight = 30.0;
             xpos+= xspace+width;
         }
         CGRect buttonRect = CGRectMake(xpos, ypos, width, height);
-        NSString *str = [NSString stringWithFormat:@"%@val%d",[[MyModal sharedInstance] getDefaultKeyGroup],i];
+        NSString *str = [NSString stringWithFormat:@"%@:val%d",[[MyModal sharedInstance] getDefaultKeyGroup],i];
         NSString *buttonString = [defaults valueForKey:str];
         UIButton *button = nil;
         if(i ==  maxlength){

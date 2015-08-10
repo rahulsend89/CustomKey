@@ -20,6 +20,8 @@
 @property (nonatomic) BOOL isLandscape;
 @property (nonatomic) NSLayoutConstraint *heightConstraint;
 @property (nonatomic) NSLayoutConstraint *widthConstraint;
+@property (nonatomic) NSMutableArray *defaultConstGroupAr;
+@property (nonatomic) NSString *defaultConstGroup;
 
 @end
 
@@ -55,14 +57,11 @@
     }
 }
 -(void)ChangeGroupDefault{
-    id <NSFetchedResultsSectionInfo> sectionInfo = [[MyModal sharedInstance].fetchedResultsController sections][0];
-    //int maxNum = (int)[sectionInfo numberOfObjects];
-    NSArray *array = [sectionInfo objects];
-    [array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        NSLog(@"obj : %@",[[obj valueForKey:@"tableData"] description]);
+    [[MyModal sharedInstance] changeMyDefaultGroup:^(BOOL val) {
+        if (val) {
+            [[self keyboard] didReceiveMessageNotification:nil];
+        }
     }];
-//    NSManagedObject *object = [[MyModal sharedInstance].fetchedResultsController objectAtIndexPath:indexPath];
-//    cell.textLabel.text = [[object valueForKey:@"tableData"] description];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

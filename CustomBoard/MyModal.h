@@ -15,6 +15,8 @@ FOUNDATION_EXPORT NSString *const kGroupKey;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (nonatomic) NSMutableArray *defaultConstGroupAr;
+@property (nonatomic) NSString *defaultConstGroup;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
@@ -29,4 +31,5 @@ FOUNDATION_EXPORT NSString *const kGroupKey;
 - (void)unregisterForNotificationsWithIdentifier:(NSString *)identifier;
 -(void)removeAllNotification;
 -(NSString *)getDefaultKeyGroup;
+-(void)changeMyDefaultGroup:(void(^)(BOOL val))callBack;
 @end

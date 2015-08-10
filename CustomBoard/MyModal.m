@@ -22,7 +22,7 @@ NSString * const kGroupKey = @"group.myKey";
 -(void)initMyDBIfNeeded{
     NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:kGroupKey];
     if(![defaults boolForKey:defaultsVal]){
-        [self resetData];
+        [[MyModal sharedInstance] resetData];
     }
 }
 -(NSString*)getValueForKey:(NSString*)defaultKey{
@@ -73,7 +73,37 @@ NSString * const kGroupKey = @"group.myKey";
     [defaults setBool:YES forKey:defaultsVal];
     [defaults synchronize];
 }
-
+-(void)changeMyDefaultGroup:(void(^)(BOOL val))callBack{
+    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:kGroupKey];
+    if (![MyModal sharedInstance].defaultConstGroup) {
+        [MyModal sharedInstance].defaultConstGroup = [[MyModal sharedInstance] getDefaultKeyGroup];
+        if (![MyModal sharedInstance].defaultConstGroup) {
+            NSLog(@"Error with initData");
+        }
+    }
+    if (![MyModal sharedInstance].defaultConstGroupAr) {
+        [MyModal sharedInstance].defaultConstGroupAr = [NSMutableArray array];
+        id <NSFetchedResultsSectionInfo> sectionInfo = [[MyModal sharedInstance].fetchedResultsController sections][0];
+        NSArray *array = [sectionInfo objects];
+        [array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            NSString *objVal = [[obj valueForKey:@"tableData"] description];
+            [[MyModal sharedInstance].defaultConstGroupAr addObject:objVal];
+        }];
+    }
+    if ([MyModal sharedInstance].defaultConstGroupAr.count) {
+        NSInteger getCurrentGroupIndex = [[MyModal sharedInstance].defaultConstGroupAr indexOfObject:[MyModal sharedInstance].defaultConstGroup];
+        getCurrentGroupIndex ++;
+        if (getCurrentGroupIndex>[MyModal sharedInstance].defaultConstGroupAr.count-1) {
+            getCurrentGroupIndex = 0;
+        }
+        [MyModal sharedInstance].defaultConstGroup = [[[MyModal sharedInstance] defaultConstGroupAr] objectAtIndex:getCurrentGroupIndex];
+        [defaults setValue:[MyModal sharedInstance].defaultConstGroup forKey:defaultKeyGroup];
+        [defaults synchronize];
+        callBack(YES);
+        return;
+    }
+    callBack(NO);
+}
 //Notification Helper function
 
 -(void)updateValuesWithString:(NSString*)myString forKey:(NSString*)defaultKey{
@@ -161,8 +191,8 @@ CFNotificationCenterRef const center = CFNotificationCenterGetDarwinNotifyCenter
     if (_persistentStoreCoordinator != nil) {
         return _persistentStoreCoordinator;
     }
-    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"keyTable.sqlite"];
+    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[[MyModal sharedInstance] managedObjectModel]];
+    NSURL *storeURL = [[[MyModal sharedInstance] applicationDocumentsDirectory] URLByAppendingPathComponent:@"keyTable.sqlite"];
     NSError *error = nil;
     NSString *failureReason = @"There was an error creating or loading the application's saved data.";
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
@@ -187,17 +217,17 @@ CFNotificationCenterRef const center = CFNotificationCenterGetDarwinNotifyCenter
     }
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Entity" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Entity" inManagedObjectContext:[MyModal sharedInstance].managedObjectContext];
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchBatchSize:20];
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"tableData" ascending:NO];
     NSArray *sortDescriptors = @[sortDescriptor];
     [fetchRequest setSortDescriptors:sortDescriptors];
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Master"];
-    self.fetchedResultsController = aFetchedResultsController;
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[MyModal sharedInstance].managedObjectContext sectionNameKeyPath:nil cacheName:@"Master"];
+    [MyModal sharedInstance].fetchedResultsController = aFetchedResultsController;
     
     NSError *error = nil;
-    if (![self.fetchedResultsController performFetch:&error]) {
+    if (![[MyModal sharedInstance].fetchedResultsController performFetch:&error]) {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
@@ -206,10 +236,10 @@ CFNotificationCenterRef const center = CFNotificationCenterGetDarwinNotifyCenter
 }
 
 - (void)insertNewObject:(id)sender {
-    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
-    NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
+    NSManagedObjectContext *context = [[MyModal sharedInstance].fetchedResultsController managedObjectContext];
+    NSEntityDescription *entity = [[[MyModal sharedInstance].fetchedResultsController fetchRequest] entity];
     NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][0];
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[MyModal sharedInstance].fetchedResultsController sections][0];
     int maxCount = (int)[sectionInfo numberOfObjects];
     NSString *appededString = [NSString stringWithFormat:@"CustomKeyNode:%d",maxCount];
     if (!maxCount) {
@@ -226,7 +256,7 @@ CFNotificationCenterRef const center = CFNotificationCenterGetDarwinNotifyCenter
         return _managedObjectContext;
     }
     
-    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+    NSPersistentStoreCoordinator *coordinator = [[MyModal sharedInstance] persistentStoreCoordinator];
     if (!coordinator) {
         return nil;
     }
@@ -238,7 +268,7 @@ CFNotificationCenterRef const center = CFNotificationCenterGetDarwinNotifyCenter
 #pragma mark - Core Data Saving support
 
 - (void)saveContext {
-    NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
+    NSManagedObjectContext *managedObjectContext = [MyModal sharedInstance].managedObjectContext;
     if (managedObjectContext != nil) {
         NSError *error = nil;
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {

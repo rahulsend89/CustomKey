@@ -10,8 +10,8 @@
             <rect key="frame" x="0.0" y="-1" width="494" height="353"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YID-vc-d5R">
-                    <rect key="frame" x="0.0" y="30" width="44" height="160"/>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YID-vc-d5R">
+                    <rect key="frame" x="-1" y="30" width="44" height="160"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="44" id="MU5-75-9dE"/>
@@ -96,6 +96,7 @@
                 </mask>
             </variation>
             <connections>
+                <outlet property="defaultGroupBtn" destination="YID-vc-d5R" id="f77-cd-h2z"/>
                 <outlet property="myScrollView" destination="UlB-Cn-qNY" id="8bx-2F-uZP"/>
                 <outlet property="nextKeyboardButton" destination="9b2-EX-3je" id="Iin-3v-PdW"/>
                 <outlet property="segmentedView" destination="ZSc-1Y-zIr" id="Ged-nh-FCW"/>
